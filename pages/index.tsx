@@ -1,4 +1,5 @@
 import Head from "next/head"
+import { Container } from "./components/Container"
 import styles from "../styles/Home.module.sass"
 
 export default function Home() {
