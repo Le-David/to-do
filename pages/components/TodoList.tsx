@@ -1,18 +1,24 @@
+import React from "react"
+import { TodoItem } from "./TodoItem"
 import styles from "../../styles/components/TodoList.module.sass"
 
-export const TodoList = () => {
+interface TodoListProps {
+  todos: Array<ITodo>
+}
+
+interface ITodo {
+  text: string
+  completed: boolean
+  id: number
+}
+
+export const TodoList: React.FunctionComponent<TodoListProps> = ({ todos }) => {
   return (
     <div className={styles.todo}>
       <ul className={styles.list}>
-        <div className={styles.wrapperItem}>
-          <li className={styles.item}>test</li>
-          <button className={styles.btn_success}>
-            <i className="fas fa-check-square"></i>
-          </button>
-          <button className={styles.btn_trash}>
-            <i className="fas fa-trash"></i>
-          </button>
-        </div>
+        {todos.map((todo) => (
+          <TodoItem text={todo.text} completed={todo.completed} id={todo.id} />
+        ))}
       </ul>
     </div>
   )
