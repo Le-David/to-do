@@ -25,15 +25,20 @@ export const TodoForm: React.FunctionComponent<TodoFormProps> = ({
 
   const submitHandler = (event: MouseEvent) => {
     event.preventDefault()
-    setTodos([
-      ...todos,
-      {
-        text: inputText,
-        completed: false,
-        id: Math.random() * 1000,
-      },
-    ])
-    setInputText("")
+
+    if (inputText) {
+      setTodos([
+        ...todos,
+        {
+          text: inputText,
+          completed: false,
+          id: Math.random() * 1000,
+        },
+      ])
+      setInputText("")
+    } else {
+      alert("Don't be lazy. Add some task!!!")
+    }
   }
 
   return (
