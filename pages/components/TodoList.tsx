@@ -17,7 +17,12 @@ export const TodoList: React.FunctionComponent<TodoListProps> = ({ todos }) => {
     <div className={styles.todo}>
       <ul className={styles.list}>
         {todos.map((todo) => (
-          <TodoItem text={todo.text} completed={todo.completed} id={todo.id} />
+          <TodoItem
+            key={todo.id}
+            text={todo.text}
+            completed={todo.completed}
+            id={todo.id}
+          />
         ))}
       </ul>
     </div>
