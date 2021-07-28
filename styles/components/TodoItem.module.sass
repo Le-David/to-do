@@ -8,11 +8,10 @@
     font-size: 24px
     outline: 0
     border: none
-    background: #fff
     box-shadow: 3px 3px 3px rgba(0,0,0,0.3)
     border-radius: 0
 
-.btn_success, .btn_trash
+.btn_success, .btn_trash, .isCompleted .btn_success
     cursor: pointer
     transition: color .3s, background .3s
 
@@ -39,3 +38,15 @@
 
     &:hover
         background: #ED213A
+
+.isCompleted
+
+    .item
+        color: #ACACAC
+        text-decoration: line-through
+
+    .btn_success
+        color: #ED213A
+
+        &:hover
+            background: #ED213A

@@ -35,16 +35,19 @@ export const TodoItem: React.FunctionComponent<TodoItemProps> = ({
   }
 
   return (
-    <div className={styles.wrapperItem}>
+    <div
+      className={clsx(
+        styles.wrapperItem,
+        todo.completed ? styles.isCompleted : ""
+      )}
+    >
       <li className={styles.item}>{todo.text}</li>
-      <button
-        onClick={completeHandler}
-        className={clsx(
-          styles.btn_success,
-          todo.completed ? "is-completed" : "" // TODO: style completed todo
+      <button onClick={completeHandler} className={styles.btn_success}>
+        {todo.completed ? (
+          <i className="fas fa-times"></i>
+        ) : (
+          <i className="fas fa-check-square"></i>
         )}
-      >
-        <i className="fas fa-check-square"></i>
       </button>
       <button onClick={deleteHandler} className={styles.btn_trash}>
         <i className="fas fa-trash"></i>
