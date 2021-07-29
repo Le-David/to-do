@@ -1,15 +1,20 @@
 .form
+    display: flex
+    justify-content: center
+    align-items: center
     margin-bottom: 24px
 
-.submit, .input
+.submit, .input, .selectIn
     padding: 10px
     font-size: 32px
     outline: 0
     border: none
     background: #fff
-    color: #159957
     box-shadow: 3px 3px 3px rgba(0,0,0,0.3)
+
+.submit, .input
     border-radius: 0
+    color: #159957
 
 .input
     width: 300px
@@ -30,3 +35,21 @@
         color: #fff
         cursor: pointer
         background: #159957
+
+.select
+    position: relative
+    margin: 0 20px
+
+.selectIn
+    padding-right: 30px
+    border-radius: 2px
+    appearance: none
+    cursor: pointer
+
+.arrow
+    position: absolute
+    top: 50%
+    right: 10px
+    transform: translateY(-50%)
+    transition: transform .3s ease-in-out
+    pointer-events: none

@@ -54,6 +54,16 @@ export const TodoForm: React.FunctionComponent<TodoFormProps> = ({
         <button onClick={submitHandler} className={styles.submit} type="submit">
           <i className="fas fa-plus-square"></i>
         </button>
+        <div className={styles.select}>
+          <select className={styles.selectIn} name="filter" id="filter">
+            <option value="all">All</option>
+            <option value="completed">Completed</option>
+            <option value="uncompleted">Uncompleted</option>
+          </select>
+          <div className={styles.arrow}>
+            <i className="fas fa-chevron-down"></i>
+          </div>
+        </div>
       </form>
     </div>
   )
