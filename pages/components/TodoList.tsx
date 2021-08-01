@@ -5,6 +5,7 @@ import styles from "../../styles/components/TodoList.module.sass"
 interface TodoListProps {
   todos: Array<ITodo>
   setTodos: Dispatch<SetStateAction<Array<ITodo>>>
+  filteredTodos: Array<ITodo>
 }
 
 interface ITodo {
@@ -16,11 +17,12 @@ interface ITodo {
 export const TodoList: React.FunctionComponent<TodoListProps> = ({
   todos,
   setTodos,
+  filteredTodos,
 }) => {
   return (
     <div className={styles.todo}>
       <ul className={styles.list}>
-        {todos.map((todo) => (
+        {filteredTodos.map((todo) => (
           <TodoItem
             key={todo.id}
             todos={todos}

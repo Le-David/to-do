@@ -6,6 +6,7 @@ interface TodoFormProps {
   inputText: string
   todos: Array<ITodo>
   setTodos: Dispatch<SetStateAction<Array<ITodo>>>
+  setStatus: Dispatch<SetStateAction<string>>
 }
 interface ITodo {
   text: string
@@ -18,6 +19,7 @@ export const TodoForm: React.FunctionComponent<TodoFormProps> = ({
   inputText,
   setTodos,
   todos,
+  setStatus,
 }) => {
   const inputTextHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputText(event.target.value)
@@ -41,6 +43,10 @@ export const TodoForm: React.FunctionComponent<TodoFormProps> = ({
     }
   }
 
+  const statusHandler = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setStatus(event.target.value)
+  }
+
   return (
     <div className={styles.wrapper}>
       <form className={styles.form}>
@@ -55,7 +61,12 @@ export const TodoForm: React.FunctionComponent<TodoFormProps> = ({
           <i className="fas fa-plus-square"></i>
         </button>
         <div className={styles.select}>
-          <select className={styles.selectIn} name="filter" id="filter">
+          <select
+            onChange={statusHandler}
+            className={styles.selectIn}
+            name="filter"
+            id="filter"
+          >
             <option value="all">All</option>
             <option value="completed">Completed</option>
             <option value="uncompleted">Uncompleted</option>
