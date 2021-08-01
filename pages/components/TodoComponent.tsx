@@ -29,9 +29,32 @@ export const TodoComponent = () => {
     }
   }
 
+  // save todos to local storage
+  const setDataToLocal = (data: Array<ITodo>) => {
+    localStorage.setItem("data", JSON.stringify(data))
+  }
+
+  // get todos from local storage
+  const getDataFromLocal = () => {
+    const data = localStorage.getItem("data")
+    let localData: Array<ITodo> = []
+    if (localStorage.getItem("data") === null) {
+      setDataToLocal([])
+    } else {
+      localData = JSON.parse(data ?? "")
+    }
+    setTodos(localData)
+  }
+
+  // get local data only on 1. render of page
+  useEffect(() => {
+    getDataFromLocal()
+  }, []) // second argument (an empty array) says that everything inside "useEffect" will be rendered only once
+
   // "useEffect" filter array of todos everytime when new todo is submitted or new status is chosen.
   useEffect(() => {
     filterHandle()
+    setDataToLocal(todos)
   }, [todos, status])
 
   return (
